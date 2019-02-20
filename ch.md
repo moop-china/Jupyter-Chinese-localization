@@ -1,4 +1,3 @@
-[TOC]
 ### 环境
 * ipython
 * jupyter
