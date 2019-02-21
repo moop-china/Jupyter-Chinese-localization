@@ -112,8 +112,13 @@ The PDF printed by jupyter notebook can't display Chinese properly or it just ca
 ### References
 
 https://www.linuxidc.com/Linux/2015-07/120653.htm
+
 http://blog.jqian.net/post/xelatex.html
+
 https://nova.moe/config-chinese-latex-env-on-fedora/
+
 https://nova.moe/fix-jupyter-export-pdf-CJK-display-problem/
+
 http://blog.sina.com.cn/s/blog_487bb6210101ap8r.html
+
 https://github.com/jupyter/notebook/issues/2848
