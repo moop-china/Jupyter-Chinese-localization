@@ -1,21 +1,30 @@
+### 问题
+
+jupyter notebook打印的pdf，无法正常显示中文。
+
 ### 环境
+
+* Ubuntu 18.04 LTS
 * ipython
 * jupyter
 * pandoc
 * nbconvert
-### 遇到的问题
+### 解决方案
+
 1. 无法打印
-原因是依赖不全，按照错误提示下载好就可以
+  原因是依赖不全，按照错误提示下载好就可以
+
     * 下载pandoc
 
         nbconvert failed: Pandoc wasn't found. Please check that pandoc is installed
 
-        conda install pandoc
+        解决：```conda install pandoc```
+
     * 下载xelatex
 
         nbconvert failed: xelatex not found on PATH, if you have not installed xelatex you may need to do so. Find further instructions at https://nbconvert.readthedocs.io/en/latest/install.html#installing-tex.
 
-        sudo apt-get install texlive-xetex
+        解决：```sudo apt-get install texlive-xetex```
 
         注意linux和windows，mac不同，这不是python的包，详见上面的链接
 
@@ -32,7 +41,7 @@
 
     * 正式修改模板
         1. 查看本地中文字体，fc-list :lang=zh，注意空格
-        2. 路径：~/anaconda3/lib/python3.7/site-packages/nbconvert/templates/latex
+        2. 路径：```~/anaconda3/lib/python3.7/site-packages/nbconvert/templates/latex```
         3. 修改文件article.tplx，往这下面的docclass里面写入字体设置
         4. ~~article 改成ctexart %\documentclass[11pt]{ctexart}，发现ctexart.cls缺失，可以考虑去下载一个~~
         5. 在导言区写入\setCJKmainfont{NotoSerifCJK-Regular}发现无法找到这个字体，结果是因为名字写错，比如/usr/share/fonts/truetype/arphic/uming.ttc: AR PL UMing CN:style=Light，名字是AR PL UMing CN，而不是前面的uming.ttc
@@ -59,7 +68,7 @@
     段落的前后必须是空行，会自动缩进，段末用两个空格+enter代表换行
 
     但是每个cell的第一行，还是无法缩进，这是latex的默认写法
-    
+
     要强制缩进需要这导言区加上\usepackage{indentfirst}
 
 5. pdf无法正常显示列表
@@ -71,33 +80,33 @@
 2. jupyter-chinese-test python=3.7
 3. 安装必要的包：jupyter，pandoc等
 4. 配置远程登录
-    * 生成配置文件：jupyter notebook --generate-config
-    * 设置密码：jupyter notebook password welcome1
-    * 修改配置文件：/home/USERNAME/.jupyter/jupyter_notebook_config.py
+    * 生成配置文件：```jupyter notebook --generate-config```
 
-        ~~c.NotebookApp.ip='*'出错~~
+    * 设置密码：```jupyter notebook password welcome1```
 
-        c.NotebookApp.ip='0.0.0.0'     设置监听全部ip地址
+    * 修改配置文件：```home/USERNAME/.jupyter/jupyter_notebook_config.py```
 
-        c.NotebookApp.password = 'welcome1' 之前设置的密码
-
+        ```python
+        # c.NotebookApp.ip='*'  #出错
+        c.NotebookApp.ip='0.0.0.0'     # 设置监听全部ip地址
+        c.NotebookApp.password = 'welcome1' # 之前设置的密码
         c.NotebookApp.open_browser = False
-
         c.NotebookApp.notebook_dir = '~/jupyter-chinese'
-        
-5. 安装xelatex：sudo apt-get install texlive-xetex
+        ```
+
+5. 安装xelatex：```sudo apt-get install texlive-xetex```
 
 6. 新问题：Could not map source abbreviation for ecrm1095.
 
     原因：缺失字体
 
-    sudo apt install texlive-fonts-recommended
+    ```sudo apt install texlive-fonts-recommended```
 
 7. 新问题：LaTeX Error: File `caption.sty' not found
 
     原因：Use of unavailable package
 
-    sudo apt-get -y install texlive-latex-recommended
+    ```sudo apt-get -y install texlive-latex-recommended```
 
 8. 但是仍然缺失新的sty
 
@@ -105,7 +114,7 @@
     ```shell
     apt-cache search caption | grep tex
     apt-cache search cjk | grep tex
-
+    
     sudo apt-get install latex-cjk-chinese
     ```
 
@@ -113,9 +122,9 @@
 
 10. 重复之前的中文配置，下面是一些不一样的地方
 
-    * 路径是:~/anaconda3/envs/jupyter-chinese-test/lib/python3.7/site-packages/nbconvert/templates/latex
-    * 又缺失了cjk的某sty，apt-cache search cjk | grep tex，找到大概的包名
-    * 安装latex-cjk-chinese
+   * 路径是:```~/anaconda3/envs/jupyter-chinese-test/lib/python3.7/site-packages/nbconvert/templates/latex```
+   * 又缺失了cjk的某sty，```apt-cache search cjk | grep tex```，找到大概的包名
+   * 安装latex-cjk-chinese
 
 11. 成功
 
