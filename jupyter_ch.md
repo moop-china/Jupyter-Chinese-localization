@@ -14,8 +14,9 @@ jupyter notebook打印的pdf，无法正常显示中文。
 ### 解决方案
 
 1. 无法打印
-  原因是依赖不全，按照错误提示下载好就可以
 
+    原因是依赖不全，按照错误提示下载好就可以
+    
     * 下载pandoc
 
         nbconvert failed: Pandoc wasn't found. Please check that pandoc is installed
