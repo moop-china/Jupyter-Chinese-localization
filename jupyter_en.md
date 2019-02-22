@@ -14,6 +14,7 @@ The PDF printed by jupyter notebook can't display Chinese properly or it just ca
 ### Solution
 
 1. Can't print PDF
+
    IF you can't print PDF, please follow the error message. Mostly there are some dependencies that haven't installed yet. Here are some examples.
 
    - Pandoc
@@ -50,7 +51,9 @@ The PDF printed by jupyter notebook can't display Chinese properly or it just ca
      ```shell
      apt-cache search caption | grep tex
      ```
+
      And you will get some prompts about what to install. You can change 'caption'  to what you need. 
+     
      ```shell
      texlive-latex-recommended - TeX Live: LaTeX recommended packages
      texlive-lang-japanese - TeX Live: Japanese
