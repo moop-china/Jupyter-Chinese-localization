@@ -5,10 +5,12 @@ jupyter notebook打印的pdf，无法正常显示中文。
 ### 环境
 
 * Ubuntu 18.04 LTS
-* ipython
-* jupyter
-* pandoc
-* nbconvert
+* python 3.7.2
+* ipython 6.5.0
+* jupyter 4.4.0
+* pandoc 2.2.3.2
+* nbconvert 5.3.1
+
 ### 解决方案
 
 1. 无法打印

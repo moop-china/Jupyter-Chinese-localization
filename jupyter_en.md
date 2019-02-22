@@ -4,11 +4,12 @@ The PDF printed by jupyter notebook can't display Chinese properly or it just ca
 
 ### Environments
 
-- Ubuntu 18.04 LTS
-- ipython
-- jupyter
-- pandoc
-- nbconvert
+* Ubuntu 18.04 LTS
+* python 3.7.2
+* ipython 6.5.0
+* jupyter 4.4.0
+* pandoc 2.2.3.2
+* nbconvert 5.3.1
 
 ### Solution
 
