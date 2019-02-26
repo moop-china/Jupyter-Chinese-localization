@@ -20,7 +20,7 @@ conda_install(){
 }
 config_jupyter(){
     jupyter notebook --generate-config
-    ehco pw set:welcome1
+    ehco 'pw set:welcome1'
     jupyter notebook password
     path=${HOME}'/.jupyter/jupyter_notebook_config.py'
     # path=${HOME}'/.jupyter/ju.py'
@@ -69,13 +69,17 @@ then
     echo 'add a conda environment in command line, like bash test.sh testenv'
     exit
 fi
+
 source activate $1
 conda info -e
 python --version
+
 # choose notebook dir
 notebook_dir=${HOME}'/jupyter-chinese'
+echo "notebook dir is:${HOME}"
 
+# cp ./msyh.ttf ./msyh.ttf
 conda install pandoc jupyter nbconvert
-apt_install texlive-xetex latex-cjk-chinese texlive-fonts-recommended
-config_jupyter
+apt_install texlive-xetex latex-cjk-chinese texlive-fonts-recommended 
+config_jupyterl
 config_latex
