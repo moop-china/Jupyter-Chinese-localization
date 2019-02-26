@@ -1,7 +1,0 @@
-FROM one:latest
-
-RUN bash p_root.sh base
-
-USER jovyan
-
-RUN bash -c '/bin/echo -e "y\n" | bash p_user.sh'

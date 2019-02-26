@@ -1,0 +1,9 @@
+name: ch_localization
+dependencies: 
+    - python=3.6
+    - pandoc
+    - jupyter
+    - nbconvert
+    - matplotlib
+    - pandas
+    - seaborn

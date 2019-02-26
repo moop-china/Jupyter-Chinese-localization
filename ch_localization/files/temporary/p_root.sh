@@ -5,17 +5,6 @@
 # 默认字体和shell是在同一文件夹下
 # call by dockerfile
 
-
-# check if the env had been activated
-
-# if [ $# -lt 1 ]
-# then 
-#     echo 'add a conda environment in command line, like bash test.sh testenv'
-#     exit
-# fi
-
-
-# source activate $1
 conda info -e
 python --version
 
@@ -43,11 +32,10 @@ setting_path=`python font_path.py`
 rm font_path.py
 
 # ---
-# /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf
 echo 'config matplotlib'
 cp /usr/share/fonts/chinese/simhei.ttf $font_path
 cp /usr/share/fonts/chinese/msyh.ttf $font_path
-# todo
+
 sed -i "s/#font.family/font.family/" $setting_path
 sed -i "s/#font.sans-serif/font.sans-serif/" $setting_path
 sed -i "s/#axes.unicode_minus/axes.unicode_minus/" $setting_path
@@ -60,7 +48,6 @@ font='Microsoft YaHei'
 font_one='Microsoft YaHei'
 font_two='SimHei'
 if [[ $txt == *$font_one* ]]
-# if [[ $txt =~ *$font_one* ]]
 then
     echo 'Microsoft YaHei found'
     font='Microsoft YaHei'
