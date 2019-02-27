@@ -5,13 +5,7 @@ LABEL maintainer="Lirongfan <lirongfan@orientsoft.cn>"
 USER root
 
 # env prepare
-COPY ./files/* ./
-
-RUN conda update conda \
-    && conda env create -f environment.yml \
-    && echo "source activate ch_localization" > ~/.bashrc 
-
-ENV PATH /opt/conda/envs/ch_localization/bin:$PATH
+COPY ./files/ ./
 
 RUN apt-get update && apt-get install -y fontconfig \
     ttf-mscorefonts-installer\
@@ -20,6 +14,12 @@ RUN apt-get update && apt-get install -y fontconfig \
     texlive-fonts-recommended\
     vim\
     && apt-get -y autoremove && apt-get -y autoclean
+
+RUN conda update conda \
+    && conda env create -f environment.yml \
+    && echo "source activate ch_localization" > ~/.bashrc 
+
+ENV PATH /opt/conda/envs/ch_localization/bin:$PATH
 
 # another 
 RUN bash ./temporary/p_root.sh

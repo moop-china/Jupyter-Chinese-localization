@@ -1,0 +1,8 @@
+FROM registry.datadynamic.io/library/jupyterlab-chinese:20190226
+
+RUN bash ./p_root.sh
+
+USER jovyan
+
+RUN bash -c '/bin/echo -e "y\n" | bash ./p_user.sh'\
+    && rm p_root.sh p_user.sh msyh.ttf simhei.ttf
