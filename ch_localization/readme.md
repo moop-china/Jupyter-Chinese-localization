@@ -1,18 +1,23 @@
 ### files
 
 + Dockerfile
++ readme.md
 + files
     + environment.yml
     + temporary
         + p_root.sh
         + p_user.sh
+        + --
         + msyh.ttf
         + simhei.ttf
+        + --
+        + nbjs.json
+        + nbui.mo
+        + notebook.mo
     + test_files
         + a.csv
         + test_pdf.png
         + 中文 and plot test.ipynb
-+ readme.md
 
 ### What dose this dockerfile do?
 

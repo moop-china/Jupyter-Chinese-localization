@@ -1,5 +1,5 @@
 # problem_fix
 1. doc中，jupyter_ch.md是解决matplotlib使用中，jupyter无法输出中文pdf和图像的方案,jupyter_ch.sh是自动脚本, jupyter_en.md是英文教程
 2. doc中，matplot_ch.md是在matplotlib中绘图无法显示中文的解决方案，matplot_ch.sh是自动脚本
-3. ch_localization下有构建docker环境的dockerfile和对应的功能性测试文件
+3. ch_localization下有构建docker环境的dockerfile和对应的功能性测试文件，详细内容请参考其下的readme.md
 4. package_check.py是在某文件夹下搜寻后缀ipynb文件中所引入的包的脚本
