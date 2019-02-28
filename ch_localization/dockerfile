@@ -1,8 +1,11 @@
-FROM registry.datadynamic.io/library/jupyterlab-chinese:20190226
+FROM registry.datadynamic.io/library/jupyterlab-chinese:20190227_1
 
-RUN bash ./p_root.sh
+COPY ./files/temporary/p_root.sh ./temporary
+COPY ./files/temporary/p_user.sh ./temporary
+
+RUN bash ./temporary/p_root.sh
 
 USER jovyan
 
-RUN bash -c '/bin/echo -e "y\n" | bash ./p_user.sh'\
-    && rm p_root.sh p_user.sh msyh.ttf simhei.ttf
+RUN bash -c '/bin/echo -e "y\n" | bash ./temporary/p_user.sh'\
+    && rm -r temporary

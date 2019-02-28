@@ -14,6 +14,4 @@ sed -i "/c.NotebookApp.ip/c c.NotebookApp.ip = '0.0.0.0'" $path
 sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" $path
 sed -i "/c.NotebookApp.notebook_dir/c c.NotebookApp.notebook_dir = '$notebook_dir' " $path
 
-echo 'flash cache if exist'
-cd $HOME'/.cache/matplotlib'
-rm fontList*
+echo 'please manually flash cache if exist, under $HOME/.cache/matplotlib'

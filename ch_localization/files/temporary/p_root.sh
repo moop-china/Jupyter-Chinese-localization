@@ -9,10 +9,11 @@ conda info -e
 python --version
 
 # ---
-echo 'prepare fonts'
+echo 'prepare fonts.'
+chmod 777 * -R
 mkdir /usr/share/fonts/chinese
-cp ./msyh.ttf /usr/share/fonts/chinese
-cp ./simhei.ttf /usr/share/fonts/chinese
+cp ./temporary/msyh.ttf /usr/share/fonts/chinese
+cp ./temporary/simhei.ttf /usr/share/fonts/chinese
 cd /usr/share/fonts/chinese
 sudo mkfontscale
 sudo mkfontdir
@@ -71,3 +72,4 @@ base=${template_path}'base.tplx'
 # add setting to article, and delete ascii_only from base
 sed -i "/\\documentclass\[11pt\]{article}/a \\\\\usepackage{indentfirst}\n\\\\usepackage{xeCJK}\n\\\\setCJKmainfont{${font}}" $article
 sed -i "s/ | ascii_only//" $base
+
