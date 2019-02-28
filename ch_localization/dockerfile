@@ -1,7 +1,6 @@
-FROM registry.datadynamic.io/library/jupyterlab-chinese:20190227_1
+FROM registry.datadynamic.io/library/jupyterlab-chinese:20190227_2
 
-COPY ./files/temporary/p_root.sh ./temporary
-COPY ./files/temporary/p_user.sh ./temporary
+COPY ./files/ ./
 
 RUN bash ./temporary/p_root.sh
 

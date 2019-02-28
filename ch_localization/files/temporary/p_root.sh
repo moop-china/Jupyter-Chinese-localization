@@ -9,6 +9,14 @@ conda info -e
 python --version
 
 # ---
+echo 'interface font set'
+# apt-get -y install language-pack-zh-hans language-pack-zh-hans-base # refer to dockerfile
+locale -a
+sed -i "4 i export LC_ALL=zh_CN.UTF-8" /usr/local/bin/start.sh
+sed -i "4 i export LANG=zh_CN.UTF-8" /usr/local/bin/start.sh
+sed -i "4 i export LANGUAGE=zh_CN:zh:en_US:en" /usr/local/bin/start.sh
+cp ./temporary/n* /opt/conda/lib/python3.7/site-packages/notebook/i18n/zh_CN/LC_MESSAGES/
+
 echo 'prepare fonts.'
 chmod 777 * -R
 mkdir /usr/share/fonts/chinese
