@@ -1,4 +1,4 @@
-FROM jupyter/base-notebook:latest
+FROM jupyter/datascience-notebook:7f1482f5a136
 
 LABEL maintainer="Lirongfan <lirongfan@orientsoft.cn>"
 
@@ -17,6 +17,7 @@ COPY ./files/ ./
 
 RUN conda update conda \
     && conda env create -f environment.yml \
+    # && conda install tornado=5.1.1 \
     && echo "source activate ch_localization" > ~/.bashrc 
 
 ENV PATH /opt/conda/envs/ch_localization/bin:$PATH
