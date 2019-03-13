@@ -16,15 +16,16 @@ class package_seeker():
                 if not file[0] == '.':
                     self.find_notebook(file_path, path_list)
             else:
-                if file.split('.')[1] == 'ipynb':
-                    file_path = os.path.join(dir, file)
-                    path_list.append(file_path)
+                # note that some files don't have postfix, like dockerfile
+                file_name = file.split('.')
+                if len(file_name) > 1 and file_name[1] == 'ipynb':
+                        file_path = os.path.join(dir, file)
+                        path_list.append(file_path)
         return path_list
 
     def parse_notebook(self, path):
-        file = open(path, 'r')
+        file = open(path, 'r', encoding='utf-8')
         content = file.read()
-
         # from sklearn.naive_bayes import GaussianNB
         pattern = '"(.*import.*)"'
         rows = re.findall(pattern, content)
@@ -43,10 +44,13 @@ class package_seeker():
             package_list += self.parse_notebook(i)
         package_list = list(set(package_list))
         package_list.sort()
+        print(package_list)
         return package_list
 
 
-path = '/home/lenke/projects/statistical-learning-method/'
+# path = '/home/lenke/projects/statistical-learning-method/'
+path = 'E:\MyProjects\statistical-learning-method'
+# path = 'E:\\MyProjects\\problem_fix'
 l = package_seeker(path).get_package_list()
 # ['collections', 'graphviz', 'itertools', 'math', 'matplotlib', 'numpy', 'pandas', 'pprint', 'scipy', 'sklearn']
 print(l)
