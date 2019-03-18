@@ -5,9 +5,7 @@
 + files
     + environment.yml
     + temporary
-        + -- shell
-        + p_root.sh
-        + p_user.sh
+        + config.sh
         + -- 字体文件
         + msyh.ttf
         + simhei.ttf

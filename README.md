@@ -6,7 +6,7 @@ jupyter notebook的使用中，有这样三个问题
 2. 无法正常下载有中文的PDF
 3. matplotlib和基于它的包画出的图没有中文
 
-这三个问题困扰着中文使用者。这个项目就是针对这些问题，对jupyter做的一些修复改造工作。
+这三个问题困扰着中文使用者。这个项目就是针对这些问题，对jupyter做的一些修复改造工作。  
 
 ## 文件结构
 
@@ -14,7 +14,7 @@ jupyter notebook的使用中，有这样三个问题
     1. jupyter_ch.md 是解决matplotlib使用中，jupyter无法输出中文pdf和图像的方案,jupyter_ch.sh是自动脚本, jupyter_en.md是英文教程  
     2. matplot_ch.md是在matplotlib中绘图无法显示中文的解决方案，matplot_ch.sh是自动脚本
 3. ch_localization  
-有构建docker环境的dockerfile和对应的功能性测试文件，详细内容请参考其下的 readme.md
+有构建docker环境的dockerfile和对应的功能性测试文件
 
 ## 操作指南
 
@@ -25,5 +25,15 @@ jupyter notebook的使用中，有这样三个问题
     ```
 2. 如果你需要jupyter的中文化，请参考ch_doc/jupyter_ch.sh
 3. 如果你需要matplotlib打印出中文，请参考ch_doc/matplot_ch.sh
-4. ch_localization/files/temporary/p_root.sh和p_user.sh是上面两个功能的整合，因为涉及到了dockerfile里面build镜像的角色问题，所以分成了两部分
+4. ch_localization/files/config.sh是上面两个功能的整合
+
+## 操作简介
+
+下面将简单介绍config.sh做了什么工作。  
+1. 首先查看python和conda的版本是否符合预期
+2. 找到python库路径，添加i18n的信息
+3. 添加字体，在Linux系统中添加字体索引信息
+4. 找到matplotlib的字体库路径，对配置文件进行修改
+5. 对jupyter进行配置
+6. 重新载入matplotlib的配置信息
 
