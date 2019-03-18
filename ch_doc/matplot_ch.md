@@ -48,6 +48,13 @@
 5. 刷新matplotlib缓存
 
    删除~/.cache/matplotlib下的字体缓存，再次运行绘图程序即可，第一次运行可能会出问题，第二次等缓存好了再运行便不会有问题。
+ 
+6. reload  
+    如果仍然不行，就重新载入
+    ```
+    from matplotlib.font_manager import _rebuild
+    _rebuild()
+    ```
 
 ### 参考
 

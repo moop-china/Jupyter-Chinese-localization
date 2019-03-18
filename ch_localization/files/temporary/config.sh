@@ -8,6 +8,14 @@
 conda info -e
 python --version
 
+echo 'import sys' > python_root_path.py
+echo 'from distutils.sysconfig import get_python_lib; print (get_python_lib())' >> python_root_path.py
+# /opt/conda/envs/ch_localization/lib/python3.6/site-packages
+lib_path=`python python_root_path.py`
+echo "lib path is:"
+echo $lib_path
+rm python_root_path.py
+
 # ---
 echo 'interface font set'
 # apt-get -y install language-pack-zh-hans language-pack-zh-hans-base # refer to dockerfile
@@ -15,7 +23,7 @@ locale -a
 sed -i "4 i export LC_ALL=zh_CN.UTF-8" /usr/local/bin/start.sh
 sed -i "4 i export LANG=zh_CN.UTF-8" /usr/local/bin/start.sh
 sed -i "4 i export LANGUAGE=zh_CN:zh:en_US:en" /usr/local/bin/start.sh
-cp ./temporary/n* /opt/conda/lib/python3.7/site-packages/notebook/i18n/zh_CN/LC_MESSAGES/
+cp ./temporary/n* ${lib_path}/notebook/i18n/zh_CN/LC_MESSAGES/
 
 echo 'prepare fonts.'
 chmod 777 * -R
@@ -68,11 +76,7 @@ else
     exit
 fi
 
-echo 'import sys' > python_root_path.py
-echo 'from distutils.sysconfig import get_python_lib; print (get_python_lib())' >> python_root_path.py
-lib_path=`python python_root_path.py`
 template_path=${lib_path}'/nbconvert/templates/latex/'
-rm python_root_path.py
 
 article=${template_path}'article.tplx'
 base=${template_path}'base.tplx'
@@ -81,3 +85,22 @@ base=${template_path}'base.tplx'
 sed -i "/\\documentclass\[11pt\]{article}/a \\\\\usepackage{indentfirst}\n\\\\usepackage{xeCJK}\n\\\\setCJKmainfont{${font}}" $article
 sed -i "s/ | ascii_only//" $base
 
+notebook_dir=${HOME}'/jupyter-chinese'
+mkdir -m 777 $notebook_dir
+cp ${HOME}/test_files/* $notebook_dir
+
+# config_jupyter
+jupyter notebook --generate-config
+path=${HOME}'/.jupyter/jupyter_notebook_config.py'
+sed -i "/c.NotebookApp.ip/c c.NotebookApp.ip = '0.0.0.0'" $path
+# sed -i "/c.NotebookApp.token/c c.NotebookApp.token = 'welcome1'" $path
+sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" $path
+sed -i "/c.NotebookApp.notebook_dir/c c.NotebookApp.notebook_dir = '$notebook_dir' " $path
+
+# matpolotlib rebuild
+echo 'from matplotlib.font_manager import _rebuild' > rebuild.py
+echo '_rebuild()' >> rebuild.py
+python rebuild.py
+rm rebuild.py
+
+echo 'please manually flash cache if exist, under $HOME/.cache/matplotlib'

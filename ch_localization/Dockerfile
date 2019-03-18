@@ -4,29 +4,18 @@ LABEL maintainer="Lirongfan <lirongfan@orientsoft.cn>"
 
 USER root
 
-RUN apt-get update && apt-get install -y fontconfig \
+COPY ./files/ ./
+
+RUN apt-get update\
+    && apt-get install -y fontconfig \
     ttf-mscorefonts-installer\
     texlive-xetex\
     latex-cjk-chinese\
     texlive-fonts-recommended\
-    vim\
+    # vim\
     language-pack-zh-hans language-pack-zh-hans-base\
-    && apt-get -y autoremove && apt-get -y autoclean
+    && apt-get -y autoremove && apt-get -y autoclean\
+    && rm -rf /var/lib/apt/lists/*
 
-COPY ./files/ ./
-
-RUN conda update conda \
-    && conda env create -f environment.yml \
-    # && conda install tornado=5.1.1 \
-    && echo "source activate ch_localization" > ~/.bashrc 
-
-ENV PATH /opt/conda/envs/ch_localization/bin:$PATH
-
-# env prepare
-
-RUN bash ./temporary/p_root.sh
-
-USER jovyan
-
-RUN bash -c '/bin/echo -e "y\n" | bash ./temporary/p_user.sh'\
-    && rm -r temporary
+# $HOME is '/home/jovyan'
+RUN bash -c '/bin/echo -e "y\n" | bash ./temporary/config.sh'

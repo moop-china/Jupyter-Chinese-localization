@@ -5,12 +5,13 @@
 + files
     + environment.yml
     + temporary
+        + -- shell
         + p_root.sh
         + p_user.sh
-        + --
+        + -- 字体文件
         + msyh.ttf
         + simhei.ttf
-        + --
+        + -- 中文界面配置文件
         + nbjs.json
         + nbui.mo
         + notebook.mo

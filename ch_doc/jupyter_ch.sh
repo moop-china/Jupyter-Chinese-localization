@@ -26,7 +26,6 @@ config_jupyter(){
     # path=${HOME}'/.jupyter/ju.py'
     # change rows
     sed -i "/c.NotebookApp.ip/c c.NotebookApp.ip = '0.0.0.0'" $path
-    sed -i "/c.NotebookApp.password/c c.NotebookApp.password = 'welcome1'" $path
     sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" $path
     sed -i "/c.NotebookApp.notebook_dir/c c.NotebookApp.notebook_dir = '$notebook_dir' " $path
 }
