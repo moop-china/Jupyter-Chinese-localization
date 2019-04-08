@@ -5,6 +5,15 @@
          "": {
             "domain": "nbjs"
          },
+         "Nbextensions": [
+            "插件"
+         ],
+         "Table of Contents": [
+            "目录"
+         ],
+         "Stop the Jupyter server": [
+            "关闭Jupyter服务器"
+         ],
          "Manually edit the JSON below to manipulate the metadata for this cell.": [
             "手动编辑下面的JSON代码来修改块元数据."
          ],

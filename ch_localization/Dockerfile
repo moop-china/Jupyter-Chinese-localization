@@ -1,4 +1,4 @@
-FROM jupyter/datascience-notebook:7f1482f5a136
+FROM jupyter/datascience-notebook:be289da10d60
 
 LABEL maintainer="Lirongfan <lirongfan@orientsoft.cn>"
 
@@ -7,15 +7,21 @@ USER root
 COPY ./files/ ./
 
 RUN apt-get update\
+    # chinese localization
     && apt-get install -y fontconfig \
     ttf-mscorefonts-installer\
     texlive-xetex\
     latex-cjk-chinese\
     texlive-fonts-recommended\
-    # vim\
     language-pack-zh-hans language-pack-zh-hans-base\
     && apt-get -y autoremove && apt-get -y autoclean\
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    # TOC extension and babel
+    && conda install -c conda-forge jupyter_contrib_nbextensions babel\ 
+    && jupyter nbextension enable toc2/main \
+    # notebooks' dependences
+    && conda install -y --file temporary/requirements_conda.txt \
+    && pip install -r temporary/requirements_pip.txt
 
 # $HOME is '/home/jovyan'
 RUN bash -c '/bin/echo -e "y\n" | bash ./temporary/config.sh'

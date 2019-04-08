@@ -23,9 +23,9 @@ jupyter notebook的使用中，有这样三个问题
     ```
     docker build --rm -f "ch_localization/Dockerfile" -t ch_localization:$tag ch_localization
     ```
-2. 如果你需要jupyter的中文化，请参考ch_doc/jupyter_ch.sh
-3. 如果你需要matplotlib打印出中文，请参考ch_doc/matplot_ch.sh
-4. ch_localization/files/config.sh是上面两个功能的整合
+3. 如果你需要jupyter的中文化，请参考ch_doc/jupyter_ch.sh
+4. 如果你需要matplotlib打印出中文，请参考ch_doc/matplot_ch.sh
+5. ch_localization/files/config.sh是上面两个功能的整合
 
 ## 操作简介
 
@@ -36,4 +36,9 @@ jupyter notebook的使用中，有这样三个问题
 4. 找到matplotlib的字体库路径，对配置文件进行修改
 5. 对jupyter进行配置
 6. 重新载入matplotlib的配置信息
+
+## 可能存在的问题
+1. 初始存在的文件都是只读文件，创建者是root，在jupyter页面是无法修改的。
+    * 容器启动后，进入其控制终端，用`docker container ls`来查询containerID，然后执行`docker exec -it ${containerID} /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"`，进入容器后到指定的位置删除文件即可。
+    * 修改`ch_localization\files\test_files`下的文件，这个文件夹下的全部内容都将被copy到jupyter的根目录
 
