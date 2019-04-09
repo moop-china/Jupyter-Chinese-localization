@@ -18,7 +18,7 @@ RUN apt-get update\
     && rm -rf /var/lib/apt/lists/* \
     # TOC extension and babel
     && conda install -c conda-forge jupyter_contrib_nbextensions babel\ 
-    && jupyter nbextension enable toc2/main \
+    && jupyter nbextension enable toc2/main \ 
     # notebooks' dependences
     && conda install -y --file temporary/requirements_conda.txt \
     && pip install -r temporary/requirements_pip.txt
