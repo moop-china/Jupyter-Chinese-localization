@@ -1,0 +1,3 @@
+$env:LOCAL_WORKING_DIR = Get-Location
+$env:PORT = 8888
+$env:ACCESS_TOKEN = "sha1:d8e7a400d741:8771c19dcc5ff3dbc204b5015005c2c4f2d6d32c"
