@@ -29,7 +29,7 @@ jupyter notebook的使用中，有这样三个问题
         docker build --rm -f "ch_localization/Dockerfile" -t ch_localization:$tag ch_localization
         ```
         注意这里的`ch_localization:$tag`是需要你自己去定义的。
-    * 在docker-compose.yml同级文件夹下执行`sh env.sh`或者是在windows下执行`.\env.ps1` 导入环境变量后，再执行
+    * 在docker-compose.yml同级文件夹下执行`source env.sh`或者是在windows下执行`.\env.ps1` 导入环境变量后，再执行
         ```
         docker-compose up
         ```
