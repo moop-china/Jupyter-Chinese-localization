@@ -29,7 +29,7 @@ jupyter notebook的使用中，有这样三个问题
         docker build --rm -f "ch_localization/Dockerfile" -t ch_localization:$tag ch_localization
         ```
         注意这里的`ch_localization:$tag`是需要你自己去定义的。
-    * 在docker-compose.yml同级文件夹下执行`source env.sh`或者是在windows下执行`.\env.ps1` 导入环境变量后，再执行
+    * 在docker-compose.yml同级文件夹下，有.env文件指定了yaml文件的环境变量。修改环境变量并执行以下命令便可以创建新的容器。
         ```
         docker-compose up
         ```
@@ -71,9 +71,9 @@ config.sh
 7. 重新载入matplotlib的配置信息
 8. 删除不需要的文件
 
-docker-compose.yml和env脚本
+docker-compose.yml和env
 1. docker-compose.yml指定了采用的镜像名称，规定了映射的文件夹和端口号，容器命名，以及修改了启动命令
-2. 两个env文件都是规定了环境变量
+2. env文件规定了环境变量
 
 ## 仍然存在的问题
 1. 插件系统的安装导致了中文的不全面
