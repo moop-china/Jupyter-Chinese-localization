@@ -25,5 +25,6 @@ RUN apt-get update\
     && conda install -y --file temporary/requirements_conda.txt \
     && pip install -r temporary/requirements_pip.txt
 
+ENV LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8 LANGUAGE=zh_CN:zh:en_US:en
 # $HOME is '/home/jovyan'
 RUN bash -c '/bin/echo -e "y\n" | bash ./temporary/config.sh'

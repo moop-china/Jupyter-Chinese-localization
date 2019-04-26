@@ -120,6 +120,9 @@ python rebuild.py
 rm rebuild.py
 
 # ------
+chmod 777 /home/jovyan/.jupyter/nbconfig/notebook.json
+
+# ------
 rm -r ${HOME}/temporary
 rm -r ${HOME}/test_files
 rm -r ${HOME}/finished_notebooks
