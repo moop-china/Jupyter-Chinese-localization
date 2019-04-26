@@ -2,6 +2,8 @@ FROM jupyter/datascience-notebook:be289da10d60
 
 LABEL maintainer="Lirongfan <lirongfan@orientsoft.cn>"
 
+# CMD ["start-notebook.sh"] from https://hub.docker.com/r/jupyter/base-notebook/dockerfile
+
 USER root
 
 COPY ./files/ ./
