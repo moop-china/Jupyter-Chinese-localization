@@ -1,4 +1,4 @@
-FROM registry.orientsoft.cn/library/jupyterlab-chinese:20190425
+FROM registry.datadynamic.io/moop/jupyter-chinese:20190429
 
 LABEL maintainer="Lirongfan <lirongfan@orientsoft.cn>"
 

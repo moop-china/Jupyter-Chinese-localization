@@ -13,6 +13,7 @@ mkdir $notebook_dir
 chmod 777 $notebook_dir -R
 cp -r ${HOME}/test_files/* $notebook_dir
 cp -r ${HOME}/finished_notebooks/* $notebook_dir
+cp ${HOME}/temporary/my_start.sh /usr/local/bin/my_start.sh
 
 # prepare environment variables
 echo 'import sys' > python_lib_path.py
